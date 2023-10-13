@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import "./styles.css";
+
+// props : taking pageNumber, handleChange from dashboard 
 function PaginationComponent({ pageNumber, handleChange }) {
+
   return (
     <div className="pagination-div">
       <Pagination
@@ -29,3 +32,5 @@ function PaginationComponent({ pageNumber, handleChange }) {
 }
 
 export default PaginationComponent;
+
+// each page has 10 coins [ 0, 99 ]

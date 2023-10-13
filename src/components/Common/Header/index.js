@@ -10,6 +10,9 @@ function Header() {
     localStorage.getItem("theme") == "dark" ? true : false
   );
 
+
+  // useEffect : This is to store theme even after refershing the page 
+  // storing in the local storge
   useEffect(() => {
     if (localStorage.getItem("theme") == "dark") {
       setDark();
@@ -18,6 +21,8 @@ function Header() {
     }
   }, []);
 
+
+  //------function to switch theme-----------
   const changeMode = () => {
     setDarkMode(!darkMode);
     toast.success("Theme Changed!");
@@ -41,35 +46,31 @@ function Header() {
 
   return (
     <div className="header">
+
       <a href="/">
         <h1>
           CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
         </h1>
       </a>
       <div className="links-flex">
-        <Switch
-          checked={darkMode}
-          onClick={() => {
-            changeMode();
-          }}
-        />
+        <Switch checked={darkMode}  onClick={() => { changeMode() }}/>
+
         <a href="/">
           <p className="link">Home</p>
         </a>
+
         <a href="/compare">
           <p className="link">Compare</p>
         </a>
+
         <a href="/watchlist">
           <p className="link">Watchlist</p>
         </a>
+
         <a href="/dashboard">
-          <Button
-            text="Dashboard"
-            onClick={() => {
-              console.log("btn-clicked!!!");
-            }}
-          />
+          <Button text="Dashboard" onClick={() => {  console.log("btn-clicked!!!")  }}/>
         </a>
+
       </div>
       <MobileDrawer />
     </div>

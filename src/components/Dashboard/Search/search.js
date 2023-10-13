@@ -18,3 +18,6 @@ function SearchComponent({ search, onChange }) {
 }
 
 export default SearchComponent;
+
+
+// It is link to Page > dashboard { for filtering }

@@ -1,7 +1,8 @@
 import React from "react";
 import NorthRoundedIcon from "@mui/icons-material/NorthRounded";
 import "./styles.css";
-function TopButton() {
+
+function TopButton() { 
   let mybutton = document.getElementById("myBtn");
 
   window.onscroll = function () {
@@ -9,12 +10,10 @@ function TopButton() {
   };
 
   function scrollFunction() {
-    if (
-      document.body.scrollTop > 300 ||
-      document.documentElement.scrollTop > 300
-    ) {
+    if ( document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
       mybutton.style.display = "flex";
-    } else {
+    } 
+    else {
       mybutton.style.display = "none";
     }
   }

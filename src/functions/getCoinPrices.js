@@ -1,6 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../constants";
 
+// paramters
 export const getCoinPrices = (id, days, priceType) => {
   const prices = axios
     .get(

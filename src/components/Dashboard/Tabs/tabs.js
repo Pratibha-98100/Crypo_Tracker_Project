@@ -1,3 +1,5 @@
+//--------page for tabs : maked grid and list 2 tabs----------
+
 import { useState } from "react";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -9,6 +11,8 @@ import Grid from "../Grid/grid";
 import List from "../List/list";
 import Button from "../../Common/Button/button";
 
+
+// passing the coins , isWatchlistPage, setSearch
 function TabsComponent({ coins, isWatchlistPage, setSearch }) {
   const [tabValue, setTabValue] = useState("grid");
 
@@ -36,70 +40,87 @@ function TabsComponent({ coins, isWatchlistPage, setSearch }) {
   return (
     <Box>
       <ThemeProvider theme={theme}>
+
         <TabContext value={tabValue}>
+
           <TabList variant="fullWidth" onChange={handleChange}>
             <Tab label="Grid" value="grid" sx={style} />
             <Tab label="List" value="list" sx={style} />
           </TabList>
+
+      
+    {/*-------- passing  coin to  : component Grid ,  ------  */}
           <TabPanel value="grid" className="tabPanel">
             <Box className="grid-flex">
-              {coins.length == 0 ? (
-                <div>
-                  <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    No Items Found
-                  </h1>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Button
-                      text={"Clear Search"}
-                      onClick={(e) => {
-                        setSearch("");
-                      }}
-                    />
+              {
+                coins.length === 0 
+                    ? 
+                  <div>
+                    <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                      No Items Found
+                    </h1>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        text={"Clear Search"}
+                        onClick={(e) => {
+                          setSearch("");
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ) : (
-                coins?.map((coin, i) => (
-                  <Grid
-                    coin={coin}
+                   : 
+           //  passing coin details to Grid component
+                coins.map((coin, i) => (
+                  <Grid coin={coin}
                     key={i}
                     delay={((i + 5) % 5) * 0.1}
                     isWatchlistPage={isWatchlistPage}
                   />
                 ))
-              )}
+              }
             </Box>
           </TabPanel>
+
+
+
+   
+  {/*-------- passing coin to  : component List ,  ------  */}
           <TabPanel value="list" className="tabPanel">
             <table className="list-flex">
-              {coins.length == 0 ? (
-                <div>
-                  <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    No Items Found
-                  </h1>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Button
-                      text={"Clear Search"}
-                      onClick={(e) => {
-                        setSearch("");
-                      }}
-                    />
-                  </div>
-                </div>
-              ) : (
-                coins?.map((coin, i) => (
-                  <List
-                    coin={coin}
-                    key={i}
-                    delay={(i % 10) * 0.1}
-                    isWatchlistPage={isWatchlistPage}
-                  />
-                ))
-              )}
+                { 
+                  coins.length === 0 
+                         ? 
+                    <div>
+                      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                        No Items Found
+                      </h1>
+                      <div style={{ display: "flex", justifyContent: "center" }}>
+                        <Button
+                          text={"Clear Search"}
+                          onClick={(e) => {
+                            setSearch("");
+                          }}
+                        />
+                      </div>
+                    </div>
+                            : 
+           //  passing coin details to List component
+                    coins.map((coin, i) => (
+                      <List
+                        coin={coin}
+                        key={i}
+                        delay={(i % 10) * 0.1}
+                        isWatchlistPage={isWatchlistPage}
+                      />
+                    ))
+                 }
             </table>
           </TabPanel>
+
         </TabContext>
+
       </ThemeProvider>
-    </Box>
+     </Box>
   );
 }
 

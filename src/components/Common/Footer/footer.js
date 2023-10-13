@@ -8,18 +8,21 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 function Footer() {
   function topFunction() {
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
   }
   return (
     <div className="footer">
+
+      {/* ----backToTop by clicking on logo : cryptoTracker*/}
       <h2 className="logo" onClick={() => topFunction()}>
         CryptoTracker<span>.</span>
       </h2>
+
       <div className="social-links">
         <a href="https://facebook.com">
           <FacebookIcon className="social-link" />
         </a>
-        <a href="mailto:avivashishta@gmail.com">
+        <a href="mailto:pratibha98100@gmail.com">
           <EmailIcon className="social-link" />
         </a>
         <a href="https://www.twitter.com">
@@ -29,6 +32,7 @@ function Footer() {
           <InstagramIcon className="social-link" />
         </a>
       </div>
+
     </div>
   );
 }

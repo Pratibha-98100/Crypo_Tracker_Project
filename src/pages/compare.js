@@ -45,7 +45,8 @@ function ComparePage() {
       const prices1 = await getCoinPrices(e.target.value, days, priceType);
       const prices2 = await getCoinPrices(coin2, days, priceType);
       settingChartData(setChartData, prices1, data1, coin2Data, prices2);
-    } else {
+    } 
+    else {
       setCoin2(e.target.value);
       const data2 = await getCoinData(e.target.value);
       coinObject(setCoin2Data, data2);

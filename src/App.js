@@ -5,52 +5,52 @@ import DashboardPage from "./pages/dashboard";
 import CoinPage from "./pages/coin";
 import ComparePage from "./pages/compare";
 import WatchlistPage from "./pages/watchlist";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
+//import { ToastContainer } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
+//import { useEffect } from "react";
 import Footer from "./components/Common/Footer/footer";
 
 function App() {
-  var cursor;
-  var cursorPointer;
+  // var cursor;
+  // var cursorPointer;
 
-  useEffect(() => {
-    cursor = document.getElementById("cursor");
-    cursorPointer = document.getElementById("cursor-pointer");
+  // useEffect(() => {
+  //   cursor = document.getElementById("cursor");
+  //   cursorPointer = document.getElementById("cursor-pointer");
 
-    document.body.addEventListener("mousemove", function (e) {
-      return (
-        (cursor.style.left = e.clientX + "px"),
-        (cursor.style.top = e.clientY + "px"),
-        (cursorPointer.style.left = e.clientX + "px"),
-        (cursorPointer.style.top = e.clientY + "px")
-      );
-    });
+  //   document.body.addEventListener("mousemove", function (e) {
+  //     return (
+  //       (cursor.style.left = e.clientX + "px"),
+  //       (cursor.style.top = e.clientY + "px"),
+  //       (cursorPointer.style.left = e.clientX + "px"),
+  //       (cursorPointer.style.top = e.clientY + "px")
+  //     );
+  //   });
 
-    document.body.addEventListener("mousedown", function (e) {
-      return (
-        (cursor.style.height = "0.5rem"),
-        (cursor.style.width = "0.5rem"),
-        (cursorPointer.style.height = "3rem"),
-        (cursorPointer.style.width = "3rem")
-      );
-    });
+  //   document.body.addEventListener("mousedown", function (e) {
+  //     return (
+  //       (cursor.style.height = "0.5rem"),
+  //       (cursor.style.width = "0.5rem"),
+  //       (cursorPointer.style.height = "3rem"),
+  //       (cursorPointer.style.width = "3rem")
+  //     );
+  //   });
 
-    document.body.addEventListener("mouseup", function (e) {
-      return (
-        (cursor.style.height = "0.3rem"),
-        (cursor.style.width = "0.3rem"),
-        (cursorPointer.style.height = "2rem"),
-        (cursorPointer.style.width = "2rem")
-      );
-    });
-  }, []);
+  //   document.body.addEventListener("mouseup", function (e) {
+  //     return (
+  //       (cursor.style.height = "0.3rem"),
+  //       (cursor.style.width = "0.3rem"),
+  //       (cursorPointer.style.height = "2rem"),
+  //       (cursorPointer.style.width = "2rem")
+  //     );
+  //   });
+  // }, []);
 
   return (
     <div className="App">
-      <div className="cursor" id="cursor" />
-      <div className="cursor-pointer" id="cursor-pointer" />
-      <ToastContainer />
+      {/* <div className="cursor" id="cursor" />
+      <div className="cursor-pointer" id="cursor-pointer" /> */}
+      {/* <ToastContainer /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -60,12 +60,14 @@ function App() {
           <Route path="/watchlist" element={<WatchlistPage />} />
         </Routes>
       </BrowserRouter>
-      {/* <Footer /> */}
     </div>
   );
 }
 
 export default App;
+
+//   /coin/:id === to use id as variable
+
 
 // 1. Is it working and functional? Is it responsive? Is it quick? Does it have a good User Experience?
 // 2. What are the features? And how do you explain it to the interviewer.

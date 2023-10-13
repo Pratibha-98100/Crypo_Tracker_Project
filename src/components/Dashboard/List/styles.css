@@ -28,6 +28,8 @@
 .mobile-price {
   display: none;
 }
+
+
 @media only screen and (max-width: 1000px) {
   .td-img img {
     width: 2rem !important;
@@ -44,6 +46,8 @@
     display: none !important;
   }
 }
+
+
 @media only screen and (max-width: 800px) {
   .td-img {
     margin-right: 0.5rem;

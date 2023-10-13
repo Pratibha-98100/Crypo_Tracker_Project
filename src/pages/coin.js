@@ -13,6 +13,8 @@ import { getCoinData } from "../functions/getCoinData";
 import { getCoinPrices } from "../functions/getCoinPrices";
 import { settingChartData } from "../functions/settingChartData";
 
+
+// this is for coinPage : having graph , description
 function CoinPage() {
   const { id } = useParams();
   const [coin, setCoin] = useState();
@@ -24,21 +26,28 @@ function CoinPage() {
     datasets: [],
   });
 
+
+
+
   useEffect(() => {
     getData();
   }, [id]);
 
+
   const getData = async () => {
     setLoading(true);
-    const data = await getCoinData(id);
+    const data = await getCoinData(id);                                                          // fetching data from function getCoinData()
+    
     if (data) {
-      coinObject(setCoin, data); //For Coin Obj being passed in the List
-      const prices = await getCoinPrices(id, days, priceType);
+      coinObject(setCoin, data);                                                                 //For coinObject being passed in the List
+      const prices = await getCoinPrices(id, days, priceType);                                   //  fetching data from function getCoinPrices()
+     
       if (prices) {
         settingChartData(setChartData, prices, data);
         setLoading(false);
       }
     }
+
   };
 
   const handleDaysChange = async (event) => {
@@ -64,27 +73,35 @@ function CoinPage() {
   return (
     <div>
       <Header />
-      {loading || !coin?.id || !chartData ? (
-        <Loader />
-      ) : (
-        <>
-          <div className="grey-wrapper">
-            <List coin={coin} delay={0.1} />
-          </div>
-          <div className="grey-wrapper">
-            <SelectDays days={days} handleDaysChange={handleDaysChange} />
-            <PriceToggle
-              handlePriceTypeChange={handlePriceTypeChange}
-              priceType={priceType}
-            />
-            <LineChart chartData={chartData} priceType={priceType} />
-          </div>
-          <CoinInfo name={coin.name} desc={coin.desc} />
-        </>
-      )}
+      {
+        loading || !coin?.id || !chartData 
+             ? 
+          <Loader />
+              : 
+          <>
+            <div className="grey-wrapper">
+              <List coin={coin} delay={0.1} />
+            </div>
+
+            <div className="grey-wrapper">
+              <SelectDays days={days} handleDaysChange={handleDaysChange} />
+              <PriceToggle
+                handlePriceTypeChange={handlePriceTypeChange}
+                priceType={priceType}
+              />
+              <LineChart chartData={chartData} priceType={priceType} />
+            </div>
+            
+            <CoinInfo name={coin.name} desc={coin.desc} />
+          </>
+      }
       <Footer />
     </div>
   );
 }
 
 export default CoinPage;
+
+
+// useParams : it is a hook provided by Dom and allows us to get makes it easy access of parameters of a URL 
+// component is rendered under the pathname of coin/:id where id is a dynamic URL parameter
